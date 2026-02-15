@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>rdRMM — Reliable Device & Remote Management</title>
+  <meta name="description" content="rdRMM: Reliable remote device and risk management for teams — monitor, automate, and secure infrastructure with simplicity." />
+  <meta property="og:title" content="rdRMM — Reliable Device & Remote Management" />
+  <meta property="og:description" content="Monitor, automate, and secure your devices with rdRMM." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/images/placeholder.svg" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">rdRMM</a>
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#how">How it Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Remote device management that just works</h1>
+          <p class="lead">rdRMM helps teams monitor, automate, and secure distributed devices with lightweight tooling, clear alerts, and powerful automation.</p>
+          <p class="cta-row"><a class="btn primary" href="#contact">Get in touch</a> <a class="btn" href="#features">Learn more</a></p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="assets/images/placeholder.svg" alt="Illustration: devices, cloud, automation">
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features container">
+      <h2>Features</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Monitoring</h3>
+          <p>Proactive device health checks, performance dashboards, and simple alerts that integrate where you already work.</p>
+        </article>
+        <article class="card">
+          <h3>Automation</h3>
+          <p>Automate updates, remediation and workflows so teams spend less time on busywork and more on impact.</p>
+        </article>
+        <article class="card">
+          <h3>Security</h3>
+          <p>Built-in best practices, audit-friendly logs, and policy controls to keep your fleet compliant and safe.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how" class="how container">
+      <h2>How it works</h2>
+      <ol>
+        <li>Install the lightweight agent or configure remote endpoints.</li>
+        <li>Define monitors, policies, and automation rules.</li>
+        <li>Receive actionable alerts and automate remediation.</li>
+      </ol>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h2>Contact</h2>
+      <p>Interested in rdRMM or want a demo? Email us at <a href="mailto:hello@rdrmm.example">hello@rdrmm.example</a> or use the form below.</p>
+      <form class="contact-form" action="#" onsubmit="alert('Thanks — demo request submitted (demo only).'); return false;">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required />
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> rdRMM — Remote Device & Risk Management</p>
+      <nav class="footer-nav" aria-label="Social">
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
