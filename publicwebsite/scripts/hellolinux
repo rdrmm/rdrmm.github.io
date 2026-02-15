@@ -1,0 +1,35 @@
+#!/bin/bash
+
+asset_id=$(cat /etc/machine-id)
+hostname=$(hostname)
+serial=$(cat /sys/class/dmi/id/product_serial 2>/dev/null)
+manufacturer=$(cat /sys/class/dmi/id/sys_vendor 2>/dev/null)
+model=$(cat /sys/class/dmi/id/product_name 2>/dev/null)
+
+cpu=$(lscpu | awk -F: '/Model name/ {print $2}' | xargs)
+ram_gb=$(free -g | awk '/Mem:/ {print $2}')
+storage_gb=$(lsblk -b -o SIZE,TYPE | awk '$2=="disk"{sum+=$1} END {print int(sum/1024/1024/1024)}')
+
+mac=$(ip link | awk '/ether/ {print $2; exit}')
+ip=$(hostname -I | awk '{print $1}')
+
+os_name=$(grep "^NAME=" /etc/os-release | cut -d= -f2 | tr -d '"')
+os_version=$(grep "^VERSION=" /etc/os-release | cut -d= -f2 | tr -d '"')
+
+
+cat <<EOF
+{
+  "asset_id": "$asset_id",
+  "hostname": "$hostname",
+  "serial_number": "$serial",
+  "manufacturer": "$manufacturer",
+  "model": "$model",
+  "cpu": "$cpu",
+  "ram_gb": "$ram_gb",
+  "storage_gb": "$storage_gb",
+  "mac_address": "$mac",
+  "ip_address": "$ip",
+  "os_name": "$os_name",
+  "os_version": "$os_version",
+}
+EOF
