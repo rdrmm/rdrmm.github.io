@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>rdRMM UI</title>
+    <meta name="description" content="rdRMM demo UI" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {extend: {colors: {accent: '#0ea5a4', accent2: '#3b82f6'}}}
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/ui/static/css/style.css">
+  </head>
+  <body class="font-sans bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+    <header class="bg-white dark:bg-slate-800 shadow-sm sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a href="/" class="text-lg font-semibold">rdRMM</a>
+          <span class="text-sm text-slate-500">Demo UI</span>
+        </div>
+        <nav class="hidden md:flex gap-4 items-center">
+          <a href="/" class="text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900">Dashboard</a>
+          <a href="/admin" class="text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900">Admin</a>
+          <a href="/ui/docs" class="text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900">API</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100">🌗</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="max-w-6xl mx-auto px-4 py-6 text-sm text-slate-500">
+      <div class="flex justify-between items-center">
+        <div>© {{ now.year }} rdRMM</div>
+        <div class="flex gap-4">
+          <a href="#">GitHub</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('theme-toggle');
+      btn.addEventListener('click', ()=> document.documentElement.classList.toggle('dark'));
+    </script>
+  </body>
+</html>

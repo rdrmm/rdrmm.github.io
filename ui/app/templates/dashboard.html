@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h1 class="text-2xl font-bold">Overview</h1>
+      <p class="text-sm text-slate-500 mt-1">Live demo dashboard showing a small fleet.</p>
+    </div>
+    <div class="flex gap-3">
+      <a href="#" class="px-4 py-2 bg-accent text-white rounded-md">Request demo</a>
+      <a href="/admin" class="px-4 py-2 border rounded-md">Admin</a>
+    </div>
+  </div>
+
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="p-4 bg-white rounded-lg shadow">
+      <div class="text-sm text-slate-500">Devices</div>
+      <div class="text-2xl font-semibold mt-2">{{ devices|length }}</div>
+    </div>
+    <div class="p-4 bg-white rounded-lg shadow">
+      <div class="text-sm text-slate-500">Online</div>
+      <div class="text-2xl font-semibold mt-2">{{ devices|selectattr('online')|list|length }}</div>
+    </div>
+    <div class="p-4 bg-white rounded-lg shadow">
+      <div class="text-sm text-slate-500">Actions</div>
+      <div class="mt-2"><button class="px-3 py-2 bg-accent text-white rounded">Run health checks</button></div>
+    </div>
+  </section>
+
+  <section class="bg-white rounded-lg shadow p-4">
+    <h2 class="text-lg font-semibold mb-3">Devices</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="text-sm text-slate-500">
+          <tr><th class="p-2">Name</th><th class="p-2">OS</th><th class="p-2">Status</th><th class="p-2">CPU</th></tr>
+        </thead>
+        <tbody>
+          {% for d in devices %}
+          <tr class="border-t"><td class="p-2 font-medium">{{ d.name }}</td><td class="p-2">{{ d.os }}</td><td class="p-2">{% if d.online %}<span class="text-emerald-600">online{% else %}<span class="text-rose-600">offline{% endif %}</td><td class="p-2">{{ d.cpu }}%</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+{% endblock %}
