@@ -24,3 +24,5 @@ $payload = [pscustomobject]@{
 }
 
 $payload | ConvertTo-Json -Depth 5
+
+$payload | ConvertTo-Json -Depth 5 | Out-File -FilePath "c:\rdrmm-testpayload.json" -Encoding UTF8
