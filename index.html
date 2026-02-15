@@ -8,6 +8,19 @@
   <meta property="og:title" content="rdRMM — Reliable Device & Remote Management" />
   <meta property="og:description" content="Monitor, automate, and secure your devices with rdRMM." />
   <meta property="og:type" content="website" />
+  <link rel="preload" href="assets/images/hero-illustration.svg" as="image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "rdRMM",
+    "url": "https://rdrmm.example/",
+    "description": "rdRMM provides lightweight remote device monitoring, automation, and security for distributed fleets.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {"@type":"Offer","price":"0.00","priceCurrency":"USD"}
+  }
+  </script>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="assets/images/placeholder.svg" />
 </head>
@@ -15,24 +28,73 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#">rdRMM</a>
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
         <a href="#features">Features</a>
         <a href="#how">How it Works</a>
+        <a href="#usecases">Use Cases</a>
         <a href="#contact">Contact</a>
       </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" aria-label="Toggle theme" class="icon-btn">🌗</button>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="container hero-inner">
         <div class="hero-copy">
-          <h1>Remote device management that just works</h1>
-          <p class="lead">rdRMM helps teams monitor, automate, and secure distributed devices with lightweight tooling, clear alerts, and powerful automation.</p>
-          <p class="cta-row"><a class="btn primary" href="#contact">Get in touch</a> <a class="btn" href="#features">Learn more</a></p>
+          <h1 id="hero-heading">Remote device management that just works</h1>
+          <p class="lead">rdRMM helps teams monitor, automate, and secure distributed devices with lightweight tooling, clear alerts, and powerful automation — without heavy agents.</p>
+          <ul class="hero-features">
+            <li>Lightweight, inventory-first approach</li>
+            <li>Policy-driven automation and remediation</li>
+            <li>Audit-ready logs and role-based controls</li>
+          </ul>
+          <p class="cta-row"><a class="btn primary" href="#contact">Request a demo</a> <a class="btn" href="#usecases">See use cases</a></p>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <img src="assets/images/placeholder.svg" alt="Illustration: devices, cloud, automation">
+        <div class="hero-visual" role="img" aria-label="Illustration showing devices, cloud, and automation">
+          <picture>
+            <source srcset="assets/images/hero-illustration.svg" type="image/svg+xml">
+            <img src="assets/images/placeholder.svg" alt="devices and cloud illustration">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section id="usecases" class="usecases container">
+      <h2>Common use cases</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Remote patching</h3>
+          <p>Schedule, validate, and roll back patches across diverse OSes with clear reporting and remediation hooks.</p>
+        </article>
+        <article class="card">
+          <h3>Fleet inventory</h3>
+          <p>Collect, search, and tag devices using native OS tooling for accurate asset management and compliance.</p>
+        </article>
+        <article class="card">
+          <h3>Incident response</h3>
+          <p>Automate triage steps, collect diagnostics, and run pre-approved remediation playbooks securely.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="demo" class="demo container">
+      <h2>Live demo (simulated)</h2>
+      <p class="muted">This interactive demo simulates a small fleet and lets you run simple remote actions.</p>
+      <div class="demo-panel">
+        <div class="demo-list">
+          <h3>Devices</h3>
+          <ul id="device-list" class="device-list"></ul>
+        </div>
+        <div class="demo-detail">
+          <h3>Selected device</h3>
+          <div id="device-detail" class="device-detail">Select a device to view details and run actions.</div>
+          <div class="demo-controls">
+            <button id="cmd-restart" class="btn">Restart</button>
+            <button id="cmd-collect" class="btn">Collect logs</button>
+          </div>
         </div>
       </div>
     </section>
@@ -88,7 +150,9 @@
       </nav>
     </div>
   </footer>
-
+  
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/demo.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
